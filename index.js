@@ -9,7 +9,10 @@ function onRequestHandler(){
         // 2 = headers_received, se esta llamando al metodo send
         // 3 = loading, esta cargando, es decir, esta recibiendo la respuesta
         // 4 = done, se ha completado la operacion
-        console.log(this.response);
+         
+        // DEVUELVE EN FORMATO DE ARRAY
+        const data = JSON.parse(this.response);
+        console.log(data);
     }
 }
 
