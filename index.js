@@ -12,7 +12,11 @@ function onRequestHandler(){
          
         // DEVUELVE EN FORMATO DE ARRAY
         const data = JSON.parse(this.response);
-        console.log(data);
+        // console.log(data);
+
+        const HTMLResponse = document.querySelector("#app");
+        const usuario = data.map((user) => `<li>Nombre: ${user.name} <br> Email: ${user.email}</li><hr>`);
+        HTMLResponse.innerHTML = `<ul>${usuario}</ul>`;
     }
 }
 
