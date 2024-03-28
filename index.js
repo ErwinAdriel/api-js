@@ -1,7 +1,32 @@
 const API_URL = "https://jsonplaceholder.typicode.com";
 
-const xhr = new XMLHttpRequest();
+const HTMLResponse = document.querySelector("#app");
 
+const ul = document.createElement('ul');
+
+fetch(`${API_URL}/users`)
+    .then((response) => response.json())
+    .then((users) => {
+        users.forEach((user) => {
+            let elem = document.createElement('li');
+            var nombre = document.createTextNode(`${user.name}`);
+            var email = document.createTextNode(`${user.email}`);
+            let br = document.createElement('br');
+            let hr = document.createElement('hr');
+            elem.appendChild(nombre);
+            elem.appendChild(br);
+            elem.appendChild(email);
+            elem.appendChild(hr);
+            ul.appendChild(elem);
+        });
+
+        
+
+        HTMLResponse.appendChild(ul);
+    })
+
+
+/*const xhr = new XMLHttpRequest();
 function onRequestHandler(){
     if(this.readyState === 4 && this.status === 200){
         // 0 = unset, no se ha llamado al metedo open
@@ -22,4 +47,4 @@ function onRequestHandler(){
 
 xhr.addEventListener("load", onRequestHandler);
 xhr.open("GET", `${API_URL}/users`);
-xhr.send();
+xhr.send();*/
